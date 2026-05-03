@@ -39,9 +39,11 @@
             <td style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--clr-muted);">${s.description}</td>
             <td style="text-align: right;">
               <div style="display: flex; gap: 8px; justify-content: flex-end;">
-                <a class="btn btn-sm btn-primary" href="${pageContext.request.contextPath}/admin/salles?action=edit&id=${s.id}">Modifier</a>
-                <a class="btn btn-sm btn-danger" href="${pageContext.request.contextPath}/admin/salles?action=delete&id=${s.id}"
-                   onclick="return confirm('Supprimer cette salle ?');">Supprimer</a>
+                <a class="btn btn-sm btn-primary" 
+				   href="${pageContext.request.contextPath}/admin/salles?action=edit&id=${s.id}">Modifier</a>
+				<a class="btn btn-sm btn-danger" 
+				   href="${pageContext.request.contextPath}/admin/salles?action=delete&id=${s.id}"
+				   onclick="return confirm('Supprimer cette salle ?');">Supprimer</a>
               </div>
             </td>
           </tr>

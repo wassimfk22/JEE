@@ -23,4 +23,15 @@
         <error-code>500</error-code>
         <location>/jsp/error.jsp</location>
     </error-page>
+    
+    <!-- Filtre UTF-8 — doit passer en premier -->
+<filter>
+    <filter-name>CharsetFilter</filter-name>
+    <filter-class>com.univ.filter.CharsetFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>CharsetFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+    
 </web-app>
