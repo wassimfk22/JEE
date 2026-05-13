@@ -29,9 +29,118 @@
     <filter-name>CharsetFilter</filter-name>
     <filter-class>com.univ.filter.CharsetFilter</filter-class>
 </filter>
-<filter-mapping>
-    <filter-name>CharsetFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-</filter-mapping>
+    <filter-mapping>
+        <filter-name>CharsetFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.univ.filter.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+        <url-pattern>/client/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.univ.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.univ.servlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.univ.servlet.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminDashboardServlet</servlet-name>
+        <servlet-class>com.univ.servlet.admin.AdminDashboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminDashboardServlet</servlet-name>
+        <url-pattern>/admin/dashboard</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminReservationServlet</servlet-name>
+        <servlet-class>com.univ.servlet.admin.AdminReservationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminReservationServlet</servlet-name>
+        <url-pattern>/admin/reservations</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SalleServlet</servlet-name>
+        <servlet-class>com.univ.servlet.admin.SalleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SalleServlet</servlet-name>
+        <url-pattern>/admin/salles</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ClientDashboardServlet</servlet-name>
+        <servlet-class>com.univ.servlet.client.ClientDashboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClientDashboardServlet</servlet-name>
+        <url-pattern>/client/dashboard</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ConsulterSallesServlet</servlet-name>
+        <servlet-class>com.univ.servlet.client.ConsulterSallesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConsulterSallesServlet</servlet-name>
+        <url-pattern>/client/salles</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MesReservationsServlet</servlet-name>
+        <servlet-class>com.univ.servlet.client.MesReservationsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MesReservationsServlet</servlet-name>
+        <url-pattern>/client/reservations</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ReserverServlet</servlet-name>
+        <servlet-class>com.univ.servlet.client.ReserverServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReserverServlet</servlet-name>
+        <url-pattern>/client/reserver</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NotificationServlet</servlet-name>
+        <servlet-class>com.univ.servlet.NotificationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NotificationServlet</servlet-name>
+        <url-pattern>/notifications</url-pattern>
+    </servlet-mapping>
     
 </web-app>
