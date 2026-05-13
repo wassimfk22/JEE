@@ -74,11 +74,18 @@ public class ReserverServlet extends HttpServlet {
             r.setDate(date);
             r.setHeureDebut(debut);
             r.setHeureFin(fin);
-            r.setStatut(StatutReservation.CONFIRMEE);
+            r.setStatut(StatutReservation.EN_ATTENTE);
             resDAO.insert(r);
 
+            // Notif client
             notifDAO.insert(new Notification(u.getId(),
-                    "Réservation confirmée pour le " + date + " de " + debut + " à " + fin + "."));
+                    "Votre demande de réservation pour le " + date + " (" + debut + "-" + fin + ") est en attente de validation."));
+
+            // Notif admins
+            String msgAdmin = "Nouvelle demande de réservation de " + u.getNom() + " " + u.getPrenom() + " pour le " + date;
+            for (Long adminId : new com.univ.dao.UtilisateurDAO().findAllAdminIds()) {
+                notifDAO.insert(new Notification(adminId, msgAdmin));
+            }
 
             resp.sendRedirect(req.getContextPath() + "/client/reservations");
         } catch (Exception e) {

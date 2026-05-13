@@ -8,6 +8,9 @@
   }
   String ctx = request.getContextPath();
 %>
+<link rel="stylesheet" href="<%= ctx %>/css/modal.css">
+<script src="<%= ctx %>/js/modal.js" defer></script>
+
 <nav class="navbar">
   <a class="brand" href="<%= ctx %>/">&#128218; UnivSalles</a>
   <div class="nav-links">

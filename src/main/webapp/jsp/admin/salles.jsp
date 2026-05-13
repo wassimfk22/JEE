@@ -43,7 +43,7 @@
 				   href="${pageContext.request.contextPath}/admin/salles?action=edit&id=${s.id}">Modifier</a>
 				<a class="btn btn-sm btn-danger" 
 				   href="${pageContext.request.contextPath}/admin/salles?action=delete&id=${s.id}"
-				   onclick="return confirm('Supprimer cette salle ?');">Supprimer</a>
+				   onclick="event.preventDefault(); customConfirm('Voulez-vous vraiment supprimer cette salle ?', () => window.location.href=this.href);">Supprimer</a>
               </div>
             </td>
           </tr>

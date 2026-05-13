@@ -54,6 +54,15 @@ public class ReservationDAO {
         }
     }
 
+    public void updateStatus(Long id, StatutReservation statut) throws SQLException {
+        try (Connection c = DBConnection.getConnection();
+             PreparedStatement ps = c.prepareStatement("UPDATE reservation SET statut=? WHERE id=?")) {
+            ps.setString(1, statut.name());
+            ps.setLong(2, id);
+            ps.executeUpdate();
+        }
+    }
+
     public void annuler(Long id) throws SQLException {
         try (Connection c = DBConnection.getConnection();
              PreparedStatement ps = c.prepareStatement("UPDATE reservation SET statut='ANNULEE' WHERE id=?")) {

@@ -49,6 +49,17 @@ public class UtilisateurDAO {
         }
     }
 
+    public java.util.List<Long> findAllAdminIds() throws SQLException {
+        java.util.List<Long> ids = new java.util.ArrayList<>();
+        String sql = "SELECT id FROM utilisateur WHERE role = 'ADMIN'";
+        try (Connection c = DBConnection.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) ids.add(rs.getLong("id"));
+        }
+        return ids;
+    }
+
     private Utilisateur map(ResultSet rs) throws SQLException {
         return new Utilisateur(
                 rs.getLong("id"),

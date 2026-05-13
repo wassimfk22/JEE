@@ -41,7 +41,7 @@
               <c:if test="${r.statut != 'ANNULEE'}">
                 <a class="btn btn-sm btn-danger"
                    href="${pageContext.request.contextPath}/client/reservations?action=annuler&id=${r.id}"
-                   onclick="return confirm('Annuler cette r&eacute;servation ?');">Annuler</a>
+                   onclick="event.preventDefault(); customConfirm('Voulez-vous vraiment annuler cette réservation ?', () => window.location.href=this.href);">Annuler</a>
               </c:if>
               <c:if test="${r.statut == 'ANNULEE'}">
                 <span style="color: var(--clr-faint); font-size: .85rem; font-style: italic;">Aucune action</span>
