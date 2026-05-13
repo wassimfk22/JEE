@@ -3,6 +3,7 @@ package com.univ.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Utilitaire de connexion à la base de données PostgreSQL.
@@ -23,6 +24,10 @@ public class DBConnection {
     }
 
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+        Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+        try (Statement st = conn.createStatement()) {
+            st.execute("SET client_encoding TO 'UTF8'");
+        }
+        return conn;
     }
 }
