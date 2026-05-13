@@ -65,13 +65,13 @@
                 <c:if test="${r.statut == 'EN_ATTENTE'}">
                   <a class="btn btn-sm btn-success" 
                      href="${pageContext.request.contextPath}/admin/reservations?action=confirm&id=${r.id}"
-                     onclick="event.preventDefault(); customConfirm('Confirmer cette réservation ?', () => window.location.href=this.href);">Confirmer</a>
+                     onclick="event.preventDefault(); const url=this.href; customConfirm('Confirmer cette réservation ?', function() { window.location.href=url; });">Confirmer</a>
                   <a class="btn btn-sm btn-warning" 
                      href="${pageContext.request.contextPath}/admin/reservations?action=refuse&id=${r.id}"
-                     onclick="event.preventDefault(); customConfirm('Refuser cette réservation ?', () => window.location.href=this.href);">Refuser</a>
+                     onclick="event.preventDefault(); const url=this.href; customConfirm('Refuser cette réservation ?', function() { window.location.href=url; });">Refuser</a>
                 </c:if>
                 <a class="btn btn-sm btn-danger" href="${pageContext.request.contextPath}/admin/reservations?action=delete&id=${r.id}"
-                   onclick="event.preventDefault(); customConfirm('Voulez-vous vraiment supprimer définitivement cette réservation ?', () => window.location.href=this.href);">Supprimer</a>
+                   onclick="event.preventDefault(); const url=this.href; customConfirm('Voulez-vous vraiment supprimer définitivement cette réservation ?', function() { window.location.href=url; });">Supprimer</a>
               </div>
             </td>
           </tr>

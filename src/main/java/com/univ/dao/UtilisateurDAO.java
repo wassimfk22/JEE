@@ -5,6 +5,8 @@ import com.univ.model.Utilisateur;
 import com.univ.util.DBConnection;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UtilisateurDAO {
 
@@ -49,8 +51,8 @@ public class UtilisateurDAO {
         }
     }
 
-    public java.util.List<Long> findAllAdminIds() throws SQLException {
-        java.util.List<Long> ids = new java.util.ArrayList<>();
+    public List<Long> findAllAdminIds() throws SQLException {
+        List<Long> ids = new ArrayList<>();
         String sql = "SELECT id FROM utilisateur WHERE role = 'ADMIN'";
         try (Connection c = DBConnection.getConnection();
              PreparedStatement ps = c.prepareStatement(sql);

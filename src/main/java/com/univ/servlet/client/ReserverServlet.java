@@ -7,6 +7,7 @@ import com.univ.model.Notification;
 import com.univ.model.Reservation;
 import com.univ.model.StatutReservation;
 import com.univ.model.Utilisateur;
+import com.univ.dao.UtilisateurDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -81,10 +82,15 @@ public class ReserverServlet extends HttpServlet {
             notifDAO.insert(new Notification(u.getId(),
                     "Votre demande de réservation pour le " + date + " (" + debut + "-" + fin + ") est en attente de validation."));
 
-            // Notif admins
-            String msgAdmin = "Nouvelle demande de réservation de " + u.getNom() + " " + u.getPrenom() + " pour le " + date;
-            for (Long adminId : new com.univ.dao.UtilisateurDAO().findAllAdminIds()) {
-                notifDAO.insert(new Notification(adminId, msgAdmin));
+            // Notif admins (en sécurité pour ne pas bloquer la réservation)
+            try {
+                String msgAdmin = "Nouvelle demande de réservation de " + u.getNomComplet() + " pour le " + date;
+                UtilisateurDAO uDAO = new UtilisateurDAO();
+                for (Long adminId : uDAO.findAllAdminIds()) {
+                    notifDAO.insert(new Notification(adminId, msgAdmin));
+                }
+            } catch (Exception e) {
+                e.printStackTrace(); // Log l'erreur mais continue
             }
 
             resp.sendRedirect(req.getContextPath() + "/client/reservations");
